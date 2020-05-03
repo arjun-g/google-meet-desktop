@@ -1,7 +1,7 @@
 /* All window creation functions */
 const path = require("path");
 const fs = require("fs");
-const { BrowserWindow, BrowserView, ipcMain, screen } = require("electron");
+const { BrowserWindow, BrowserView, ipcMain, screen, app } = require("electron");
 const windowStateKeeper = require("electron-window-state");
 
 const GOOGLE_MEET_URL = "https://meet.google.com/";
@@ -134,10 +134,7 @@ function createMainWindow() {
   });
 
   mainWindow.on("closed", () => {
-    if (process.platform === "win32") {
-      canvasWindow.close();
-      screenToolsWindow.close();
-    }
+    app.quit();
   });
 }
 
