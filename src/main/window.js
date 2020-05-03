@@ -105,47 +105,9 @@ function createMainWindow() {
     googleMeetView.webContents.loadURL(GOOGLE_MEET_URL);
   });
 
-  const primaryWorkarea = screen.getPrimaryDisplay().bounds;
-  const canvasWindow = new BrowserWindow({
-    x: primaryWorkarea.x,
-    y: primaryWorkarea.y,
-    width: primaryWorkarea.width,
-    height: primaryWorkarea.height,
-    transparent: true,
-    frame: false,
-    webPreferences: {
-      contextIsolation: true,
-      preload: path.join(__dirname, "..", "renderer", "preload.js"),
-    },
-    focusable: false,
-    show: false,
-    resizable: false,
-  });
-  canvasWindow.webContents.loadFile(
-    path.join(__dirname, "..", "renderer", "canvas.html")
-  );
-  canvasWindow.setAlwaysOnTop(true, "pop-up-menu");
+  let canvasWindow = createCanvasWindow();
 
-  const screenToolsWindow = new BrowserWindow({
-    x: 100,
-    y: primaryWorkarea.height - 200,
-    height: 60,
-    width: 250,
-    frame: false,
-    resizable: false,
-    show: false,
-    webPreferences: {
-      contextIsolation: true,
-      preload: path.join(__dirname, "..", "renderer", "preload.js"),
-    },
-  });
-
-  screenToolsWindow.setContentProtection(process.platform === "darwin");
-
-  screenToolsWindow.webContents.loadFile(
-    path.join(__dirname, "..", "renderer", "toolbar.html")
-  );
-  screenToolsWindow.setAlwaysOnTop(true, "screen-saver");
+  const screenToolsWindow = createScreenToolsWindow();
 
   ipcMain.on("window.screenshare.show", () => {
     mainWindow.minimize();
@@ -172,9 +134,62 @@ function createMainWindow() {
   });
 
   mainWindow.on("closed", () => {
-    canvasWindow.close();
-    screenToolsWindow.close();
+    if (process.platform === "win32") {
+      canvasWindow.close();
+      screenToolsWindow.close();
+    }
   });
+}
+
+function createCanvasWindow() {
+  const primaryWorkarea = screen.getPrimaryDisplay().bounds;
+  const canvasWindow = new BrowserWindow({
+    x: primaryWorkarea.x,
+    y: primaryWorkarea.y,
+    width: primaryWorkarea.width,
+    height: primaryWorkarea.height,
+    transparent: true,
+    frame: false,
+    webPreferences: {
+      contextIsolation: true,
+      preload: path.join(__dirname, "..", "renderer", "preload.js"),
+    },
+    focusable: false,
+    show: false,
+    resizable: false,
+    skipTaskbar: true,
+  });
+  canvasWindow.webContents.loadFile(
+    path.join(__dirname, "..", "renderer", "canvas.html")
+  );
+  canvasWindow.setAlwaysOnTop(true, "pop-up-menu");
+  return canvasWindow;
+}
+
+function createScreenToolsWindow() {
+  const primaryWorkarea = screen.getPrimaryDisplay().bounds;
+  const screenToolsWindow = new BrowserWindow({
+    x: 100,
+    y: primaryWorkarea.height - 200,
+    height: 60,
+    width: 250,
+    frame: false,
+    resizable: false,
+    show: false,
+    skipTaskbar: true,
+    webPreferences: {
+      contextIsolation: true,
+      preload: path.join(__dirname, "..", "renderer", "preload.js"),
+    },
+  });
+
+  screenToolsWindow.setContentProtection(process.platform === "darwin");
+
+  screenToolsWindow.webContents.loadFile(
+    path.join(__dirname, "..", "renderer", "toolbar.html")
+  );
+  screenToolsWindow.setAlwaysOnTop(true, "screen-saver");
+  return screenToolsWindow;
 }
 
 module.exports = { createMainWindow };
