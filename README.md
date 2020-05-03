@@ -10,7 +10,7 @@
 
   ![Demo of annotation feature](https://static.arjun-g.com/google-meet/google-meet-annotation.gif)
 
-- Share audio while sharing application window
+- Share audio while sharing application window (Windows Only)
 - Global shortcuts to mute/unmute microphone and switch on/off camera
 
 | Shortcut               | Use                           |
@@ -26,6 +26,8 @@
 - [ ] Customizable shortcuts
 - [ ] Mute/umute all participants
 - [ ] Add to windows startup
+- [ ] Add ability to share audio while screensharing in mac
+- [ ] Download chat history
 
 ## Installation
 
