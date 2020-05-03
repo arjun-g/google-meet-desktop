@@ -23,10 +23,17 @@
     "electron-builder": "^22.6.0"
   },
   "dependencies": {
-    "electron-window-state": "^5.0.3"
+    "electron-window-state": "^5.0.3",
+    "mac-screen-capture-permissions": "^1.1.0"
   },
   "build": {
     "appId": "com.arjunganesan.googleMeet",
-    "productName": "Google Meet"
+    "productName": "Google Meet",
+    "mac": {
+      "extendInfo": {
+        "NSCameraUsageDescription": "This app requires camera access for video call in Google Meet.",
+        "NSMicrophoneUsageDescription": "This app requires microphone access for audio call in Google Meet."
+      }
+    }
   }
 }

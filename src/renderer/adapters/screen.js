@@ -62,7 +62,7 @@ function createScreenSelectionPopup(sources, types) {
 module.exports = {
   getScreenId: async (types) => {
     const sources = await fetchDesktopSources(types);
-    if (sources.length === 0) {
+    if (sources.length === 1) {
       return sources[0].id;
     }
     const screenId = await createScreenSelectionPopup(sources, types);

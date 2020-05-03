@@ -12,10 +12,10 @@ const { getScreenId } = require("./screen");
       getScreenId(data.sources).then((screenId) => {
         if (screenId.indexOf("screen") === 0)
           ipcRenderer.send("window.screenshare.show");
-        waitForScreenShareToStop();
         postMessageCallbacks.forEach((callback) => {
           callback({ value: { streamId: screenId } });
         });
+        waitForScreenShareToStop();
       });
     }
   }
@@ -46,6 +46,20 @@ const { getScreenId } = require("./screen");
       },
     };
   }
+
+  const originalGU = window.navigator.mediaDevices.getUserMedia.bind(
+    navigator.mediaDevices
+  );
+  window.navigator.mediaDevices.getUserMedia = function (constraints) {
+    if (
+      process.platform === "darwin" &&
+      constraints.video &&
+      constraints.video.mandatory &&
+      constraints.video.mandatory.chromeMediaSource === "desktop"
+    )
+      constraints.audio = false;
+    return originalGU(constraints);
+  };
 
   window.chrome = { runtime: {} };
 

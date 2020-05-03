@@ -1,7 +1,13 @@
 /* All window creation functions */
 const path = require("path");
 const fs = require("fs");
-const { BrowserWindow, BrowserView, ipcMain, screen, app } = require("electron");
+const {
+  BrowserWindow,
+  BrowserView,
+  ipcMain,
+  screen,
+  app,
+} = require("electron");
 const windowStateKeeper = require("electron-window-state");
 
 const GOOGLE_MEET_URL = "https://meet.google.com/";
@@ -174,6 +180,8 @@ function createScreenToolsWindow() {
     resizable: false,
     show: false,
     skipTaskbar: true,
+    focusable: false,
+    transparent: true,
     webPreferences: {
       contextIsolation: true,
       preload: path.join(__dirname, "..", "renderer", "preload.js"),
