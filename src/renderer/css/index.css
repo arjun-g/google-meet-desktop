@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #00796b;
+}
+
+.titlebar {
+  height: 40px;
+  width: 100%;
+  -webkit-app-region: drag;
+  display: flex;
+}
+
+.titlebar .title {
+  flex: 1 1 100%;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.titlebar .controls {
+  display: flex;
+}
+
+.titlebar button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  -webkit-app-region: no-drag;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titlebar button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.titlebar button img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.titlebar button:hover img {
+  opacity: 1;
+}

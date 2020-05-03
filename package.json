@@ -1,0 +1,32 @@
+{
+  "name": "google-meet-desktop",
+  "version": "1.0.0",
+  "description": "An unofficial desktop app for Google Meet",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Arjun Ganesan",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.2.4",
+    "electron-builder": "^22.6.0"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
+  },
+  "build": {
+    "appId": "com.arjunganesan.googleMeet",
+    "productName": "Google Meet"
+  }
+}
