@@ -1,8 +1,8 @@
 const { desktopCapturer } = require("electron");
 
-async function fetchDesktopSources(type) {
+async function fetchDesktopSources(types) {
   const sources = await desktopCapturer.getSources({
-    types: [type],
+    types,
     fetchWindowIcons: true,
   });
   return sources.map((source) => ({
@@ -14,14 +14,16 @@ async function fetchDesktopSources(type) {
   }));
 }
 
-function createScreenSelectionPopup(sources, type) {
+function createScreenSelectionPopup(sources, types) {
   return new Promise((resolve) => {
     const screenSelectionPopup = document.createElement("div");
     screenSelectionPopup.className = "screen-selection-popup";
     screenSelectionPopup.innerHTML = `
     <div class="screen-list-container">
         <div class="screen-list-title">${
-          type === "screen"
+          types.includes("screen") && types.includes("window")
+            ? "Share your entire screen or an application screen"
+            : types.includes("screen")
             ? "Share your entire screen"
             : "Share an application screen"
         }</div>
@@ -58,12 +60,12 @@ function createScreenSelectionPopup(sources, type) {
 }
 
 module.exports = {
-  getScreenId: async (type) => {
-    const sources = await fetchDesktopSources(type);
-    if (type === "screen" && sources.length === 0) {
+  getScreenId: async (types) => {
+    const sources = await fetchDesktopSources(types);
+    if (sources.length === 0) {
       return sources[0].id;
     }
-    const screenId = await createScreenSelectionPopup(sources, type);
+    const screenId = await createScreenSelectionPopup(sources, types);
     return screenId;
   },
 };

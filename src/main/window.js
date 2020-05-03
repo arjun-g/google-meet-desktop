@@ -148,6 +148,7 @@ function createMainWindow() {
   screenToolsWindow.setAlwaysOnTop(true, "screen-saver");
 
   ipcMain.on("window.screenshare.show", () => {
+    mainWindow.minimize();
     screenToolsWindow.show();
   });
 

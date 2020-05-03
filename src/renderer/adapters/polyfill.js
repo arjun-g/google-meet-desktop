@@ -9,15 +9,14 @@ const { getScreenId } = require("./screen");
   const disconnectCallbacks = [];
   function postMessage(data) {
     if (data.method === "chooseDesktopMedia") {
-      getScreenId(data.sources[0] === "screen" ? "screen" : "window").then(
-        (screenId) => {
+      getScreenId(data.sources).then((screenId) => {
+        if (screenId.indexOf("screen") === 0)
           ipcRenderer.send("window.screenshare.show");
-          waitForScreenShareToStop();
-          postMessageCallbacks.forEach((callback) => {
-            callback({ value: { streamId: screenId } });
-          });
-        }
-      );
+        waitForScreenShareToStop();
+        postMessageCallbacks.forEach((callback) => {
+          callback({ value: { streamId: screenId } });
+        });
+      });
     }
   }
 
