@@ -126,11 +126,9 @@ function createMainWindow() {
   );
   canvasWindow.setAlwaysOnTop(true, "pop-up-menu");
 
-  const screenToolWindowState = windowStateKeeper({});
-
   const screenToolsWindow = new BrowserWindow({
-    x: screenToolWindowState.x,
-    y: screenToolWindowState.y,
+    x: 100,
+    y: primaryWorkarea.height - 200,
     height: 60,
     width: 250,
     frame: false,
@@ -142,7 +140,7 @@ function createMainWindow() {
     },
   });
 
-  screenToolWindowState.manage(screenToolsWindow);
+  screenToolsWindow.setContentProtection(process.platform === "darwin");
 
   screenToolsWindow.webContents.loadFile(
     path.join(__dirname, "..", "renderer", "toolbar.html")
