@@ -135,6 +135,11 @@ function createMainWindow() {
     canvasWindow.reload();
   });
 
+  ipcMain.on("window.main.focus", () => {
+    mainWindow.restore();
+    mainWindow.focus();
+  });
+
   ipcMain.on("screenshare.stop", () => {
     googleMeetView.webContents.send("screenshare.stop");
   });
@@ -175,7 +180,7 @@ function createScreenToolsWindow() {
     x: 100,
     y: primaryWorkarea.height - 200,
     height: 60,
-    width: 250,
+    width: 300,
     frame: false,
     resizable: false,
     show: false,

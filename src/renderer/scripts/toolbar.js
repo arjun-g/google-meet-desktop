@@ -13,7 +13,7 @@ penButton.addEventListener("click", () => {
   }
 });
 
-const desktopButton = document.getElementById("desktop");
-desktopButton.addEventListener("click", () => {
-  ipc.send("screenshare.stop");
+const mainwindowButton = document.getElementById("mainwindow");
+mainwindowButton.addEventListener("click", () => {
+  ipc.send("window.main.focus");
 });
