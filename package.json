@@ -1,6 +1,6 @@
 {
   "name": "google-meet-desktop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An unofficial desktop app for Google Meet",
   "main": "./src/index.js",
   "scripts": {

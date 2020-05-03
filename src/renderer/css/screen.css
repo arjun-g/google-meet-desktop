@@ -1,97 +1,122 @@
-.screen-selection-popup{
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-	font-family: 'Open Sans', sans-serif;
-	z-index: 100;
+.screen-selection-popup {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "Open Sans", sans-serif;
+  z-index: 100;
+  user-select: none;
 }
 
-.screen-selection-popup .screen-list-container{
-    background-color: white;
-    padding: 24px;
-    border-radius: 8px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-		max-height: 60vh;
-	display: flex;
-    flex-direction: column;
-	width: 710px;
+.screen-selection-popup .screen-list-container {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  width: 710px;
 }
 
-.screen-selection-popup .screen-list-container .screen-list-title{
-    font-size: 24px;
-	margin-bottom: 24px;
+.screen-selection-popup .screen-list-container .screen-list-title {
+  font-size: 24px;
+  margin-bottom: 24px;
 }
 
-.screen-selection-popup .screen-list-container .screen-list{
-    display: flex;
-		flex-wrap: wrap;
-	overflow-y: scroll;
+.screen-selection-popup .screen-list-container .screen-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item{
-	padding: 8px;
-	border-radius: 4px;
-	cursor: pointer;
-	margin-right: 24px;
-	margin-bottom: 24px;
+.screen-selection-popup .screen-list-container .screen-list .screen-list-item {
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 24px;
+  margin-bottom: 24px;
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item:nth-child(3n+3){
-	margin-right: 0;
+.screen-selection-popup
+  .screen-list-container
+  .screen-list
+  .screen-list-item:nth-child(3n + 3) {
+  margin-right: 0;
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item:hover{
-	background-color: rgba(0, 0, 0, 0.1);
+.screen-selection-popup
+  .screen-list-container
+  .screen-list
+  .screen-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item img{
-	width: 200px;
-	height: 110px;
-	object-fit: cover;
+.screen-selection-popup
+  .screen-list-container
+  .screen-list
+  .screen-list-item
+  img {
+  width: 200px;
+  height: 110px;
+  object-fit: cover;
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item .screen-list-item-name{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 4px;
+.screen-selection-popup
+  .screen-list-container
+  .screen-list
+  .screen-list-item
+  .screen-list-item-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item .screen-list-item-name img{
-	width: 16px;
-	height: 16px;
-	margin-right: 8px;
+.screen-selection-popup
+  .screen-list-container
+  .screen-list
+  .screen-list-item
+  .screen-list-item-name
+  img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 
-.screen-selection-popup .screen-list-container .screen-list .screen-list-item .screen-list-item-name span{
-	font-weight: 600;
-	font-size: 14px;
-	max-width: 160px;
-	white-space: nowrap;
+.screen-selection-popup
+  .screen-list-container
+  .screen-list
+  .screen-list-item
+  .screen-list-item-name
+  span {
+  font-weight: 600;
+  font-size: 14px;
+  max-width: 160px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.screen-selection-popup .screen-list-container .close-button{
-	position: absolute;
-	right: 24px;
-	top: 24px;
-	height: 32px;
-	width: 32px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
+.screen-selection-popup .screen-list-container .close-button {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.screen-selection-popup .screen-list-container .close-button:hover{
-	opacity: 0.75;
+.screen-selection-popup .screen-list-container .close-button:hover {
+  opacity: 0.75;
 }
