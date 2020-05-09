@@ -115,7 +115,7 @@ function createMainWindow() {
 
   const screenToolsWindow = createScreenToolsWindow();
 
-  screenToolsWindow.moveAbove(canvasWindow.getMediaSourceId());
+  // screenToolsWindow.moveAbove(canvasWindow.getMediaSourceId());
 
   ipcMain.on("window.screenshare.show", () => {
     mainWindow.minimize();
