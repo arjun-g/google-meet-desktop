@@ -52,7 +52,6 @@ const { getScreenId } = require("./screen");
   );
   window.navigator.mediaDevices.getUserMedia = function (constraints) {
     if (
-      process.platform === "darwin" &&
       constraints.video &&
       constraints.video.mandatory &&
       constraints.video.mandatory.chromeMediaSource === "desktop"
@@ -114,6 +113,6 @@ const { getScreenId } = require("./screen");
       replaceText(`${type}-version`, process.versions[type]);
     }
 
-    waitAndRemoveAudioTag();
+    // waitAndRemoveAudioTag();
   });
 })();
