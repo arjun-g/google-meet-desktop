@@ -33,6 +33,11 @@
 
 You can [download the latest release](https://github.com/arjun-g/google-meet-desktop/releases) for your operating system or build it yourself (see below).
 
+On Windows, you can also use the [Chocolatey package](https://community.chocolatey.org/packages/unofficial-google-meet), in order to do the installation/update:
+```powershell
+choco install unofficial-google-meet
+```
+
 ## Building
 
 You'll need [Node.js](https://nodejs.org) installed on your computer in order to build this app.
